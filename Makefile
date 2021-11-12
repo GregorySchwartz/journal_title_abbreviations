@@ -1,14 +1,14 @@
 python = python
 
-abbreviations.json: list.txt
-	cat $< | sort | uniq >> uniques.txt
+abbreviations.json: list.csv
+	cat $< | sort | uniq >> uniques.csv
 	rm $<
-	sed -i '/^#/d' uniques.txt
-	sed -i '/^$$/d' uniques.txt
+	sed -i '/^#/d' uniques.csv
+	sed -i '/^$$/d' uniques.csv
 	$(python) jsonify.py
-	rm uniques.txt
+	rm uniques.csv
 
-list.txt: get_lists.py
+list.csv: get_lists.py
 	$(python) $<
-	cat *_abbr.txt >> $@
-	rm *_abbr.txt
+	cat *_abbr.csv >> $@
+	rm *_abbr.csv

@@ -1,14 +1,14 @@
 #! /usr/bin/env python
 
-url = "https://raw.githubusercontent.com/JabRef/reference-abbreviations/master/journals/journal_abbreviations_"
+url = "https://raw.githubusercontent.com/JabRef/abbrv.jabref.org/main/journals/journal_abbreviations_"
 
-sources = ['ams', 'entrez', 'general', 'geology_physics', 'ieee', 'lifescience', 'mechanical', 'medicus', 'meteorology', 'sociology']
+sources = ["ams", "annee-philologique", "dainst", "entrez", "general", "geology_physics", "geology_physics_variations", "ieee", "ieee_strings", "lifescience", "mathematics", "mechanical", "medicus", "meteorology", "sociology", "webofscience-dots", "webofscience"]
 
 import requests
 for origin in sources:
-    source_url = url + origin + ".txt"
+    source_url = url + origin + ".csv"
     r = requests.get(source_url)
-    fname = origin + "_abbr.txt"
+    fname = origin + "_abbr.csv"
     with open(fname, 'w') as abbrlist:
         abbrlist.write(r.text)
 

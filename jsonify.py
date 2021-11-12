@@ -3,11 +3,10 @@ containers = {}
 
 import json, io
 
-with io.open("uniques.txt", 'r', encoding='utf-8') as abbreviations:
+with io.open("uniques.csv", 'r', encoding='utf-8') as abbreviations:
     for line in abbreviations:
-        keyval = line.lstrip().replace('"', '').rstrip().split(' = ')
+        keyval = line.lstrip().replace('"', '').rstrip().rstrip(';').split(';')
         if len(keyval) == 2:
-            print(keyval)
             containers[keyval[0]] = keyval[1]
 
 temp = {}
